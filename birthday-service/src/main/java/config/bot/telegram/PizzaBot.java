@@ -1,6 +1,6 @@
 package config.bot.telegram;
 
-import org.apache.http.client.ResponseHandler;
+import entity.ResponseHandler;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.env.Environment;
 import org.springframework.stereotype.Component;

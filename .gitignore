@@ -197,3 +197,5 @@ build/
 .vscode/
 
 .jpb/**
+spring_reminder_bot
+*.wal.0

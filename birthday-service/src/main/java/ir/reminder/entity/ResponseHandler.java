@@ -1,18 +1,18 @@
 package ir.reminder.entity;
 
+import ir.reminder.utility.Constants;
+import ir.reminder.utility.UserState;
 import org.telegram.abilitybots.api.db.DBContext;
 import org.telegram.abilitybots.api.sender.SilentSender;
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
 import org.telegram.telegrambots.meta.api.objects.Message;
 import org.telegram.telegrambots.meta.api.objects.replykeyboard.ReplyKeyboard;
 import org.telegram.telegrambots.meta.api.objects.replykeyboard.ReplyKeyboardRemove;
-import ir.reminder.utiliti.Constants;
-import ir.reminder.utiliti.UserState;
 
 import java.util.Map;
 
-import static ir.reminder.utiliti.Constants.START_TEXT;
-import static ir.reminder.utiliti.UserState.*;
+import static ir.reminder.utility.Constants.START_TEXT;
+import static ir.reminder.utility.UserState.*;
 
 public class ResponseHandler {
     private final SilentSender sender;

@@ -1,4 +1,4 @@
-package ir.reminder.utiliti;
+package ir.reminder.utility;
 
 
 public class Constants {

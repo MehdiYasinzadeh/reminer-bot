@@ -6,13 +6,13 @@ import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
 import org.telegram.telegrambots.meta.api.objects.Message;
 import org.telegram.telegrambots.meta.api.objects.replykeyboard.ReplyKeyboard;
 import org.telegram.telegrambots.meta.api.objects.replykeyboard.ReplyKeyboardRemove;
-import utiliti.Constants;
-import utiliti.UserState;
+import ir.reminder.utiliti.Constants;
+import ir.reminder.utiliti.UserState;
 
 import java.util.Map;
 
-import static utiliti.Constants.START_TEXT;
-import static utiliti.UserState.*;
+import static ir.reminder.utiliti.Constants.START_TEXT;
+import static ir.reminder.utiliti.UserState.*;
 
 public class ResponseHandler {
     private final SilentSender sender;

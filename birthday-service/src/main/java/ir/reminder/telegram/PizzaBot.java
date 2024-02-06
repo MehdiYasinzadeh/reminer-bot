@@ -10,7 +10,7 @@ import org.telegram.abilitybots.api.objects.Ability;
 import org.telegram.abilitybots.api.objects.Flag;
 import org.telegram.abilitybots.api.objects.Reply;
 import org.telegram.telegrambots.meta.api.objects.Update;
-import utiliti.Constants;
+import ir.reminder.utiliti.Constants;
 
 import java.util.function.BiConsumer;
 

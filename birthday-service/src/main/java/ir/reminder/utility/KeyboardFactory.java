@@ -1,4 +1,4 @@
-package ir.reminder.entity;
+package ir.reminder.utility;
 
 import org.telegram.telegrambots.meta.api.objects.replykeyboard.ReplyKeyboard;
 import org.telegram.telegrambots.meta.api.objects.replykeyboard.ReplyKeyboardMarkup;

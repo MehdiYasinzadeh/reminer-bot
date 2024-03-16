@@ -1,7 +1,11 @@
-package ir.reminder.entity;
+package ir.reminder.handler;
 
+import ir.reminder.entity.TelegramBotUser;
+import ir.reminder.service.TelegramBotUserService;
 import ir.reminder.utility.Constants;
+import ir.reminder.utility.KeyboardFactory;
 import ir.reminder.utility.UserState;
+import org.springframework.stereotype.Component;
 import org.telegram.abilitybots.api.db.DBContext;
 import org.telegram.abilitybots.api.sender.SilentSender;
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
@@ -14,21 +18,30 @@ import java.util.Map;
 import static ir.reminder.utility.Constants.START_TEXT;
 import static ir.reminder.utility.UserState.*;
 
+@Component
 public class ResponseHandler {
-    private final SilentSender sender;
-    private final Map<Long, UserState> chatStates;
 
-    public ResponseHandler(SilentSender sender, DBContext db) {
-        this.sender = sender;
-        chatStates = db.getMap(Constants.CHAT_STATES);
+    final
+    TelegramBotUserService telegramBotUserService;
+    private SilentSender sender;
+    private Map<Long, UserState> chatStates;
+
+    public ResponseHandler(TelegramBotUserService telegramBotUserService) {
+        this.telegramBotUserService = telegramBotUserService;
     }
 
-    public void replyToStart(long chatId) {
+    public ResponseHandler senderInit(SilentSender sender, DBContext db) {
+        this.sender = sender;
+        chatStates = db.getMap(Constants.CHAT_STATES);
+        return this;
+    }
+
+    public void replyToStart(long chatId, String userName) {
         SendMessage message = new SendMessage();
         message.setChatId(chatId);
         message.setText(START_TEXT);
         sender.execute(message);
-        chatStates.put(chatId, AWAITING_NAME);
+        telegramBotUserService.save(new TelegramBotUser().setChatId(chatId).setUsername(userName));
     }
 
     public void replyToButtons(long chatId, Message message) {
@@ -131,4 +144,5 @@ public class ResponseHandler {
     public boolean userIsActive(Long chatId) {
         return chatStates.containsKey(chatId);
     }
+
 }

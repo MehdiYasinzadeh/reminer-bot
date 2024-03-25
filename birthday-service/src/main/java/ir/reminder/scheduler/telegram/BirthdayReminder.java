@@ -19,7 +19,7 @@ public class BirthdayReminder {
         this.pizzaBot = pizzaBot;
     }
 
-    @Scheduled(fixedRate = 5000, initialDelay = 5000)
+    @Scheduled(cron = "0 0 6 ? * *", zone = "Asia/Tehran")
     public void scheduleFixedDelayTask() {
         List<TelegramBotUser> telegramUsers = botUserService.getAll();
         if (!telegramUsers.isEmpty()) {

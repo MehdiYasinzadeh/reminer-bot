@@ -3,7 +3,9 @@ package ir.reminder.telegram;
 
 import ir.reminder.handler.ResponseHandler;
 import ir.reminder.utility.Constants;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
+import org.springframework.web.client.RestTemplate;
 import org.telegram.abilitybots.api.bot.AbilityBot;
 import org.telegram.abilitybots.api.objects.Ability;
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
@@ -47,7 +49,12 @@ public class PizzaBot extends AbilityBot {
     public void sendMessage(Long chatId) throws TelegramApiException {
         SendMessage sendMessage = new SendMessage();
         sendMessage.setChatId(chatId);
-        sendMessage.setText("bah bah che khafanim ma (: ");
+        String fooResourceUrl
+                = "https://api.codebazan.ir/hadis";
+        RestTemplate restTemplate = new RestTemplate();
+        ResponseEntity<String> response
+                = restTemplate.getForEntity(fooResourceUrl , String.class);
+        sendMessage.setText(response.getBody());
         sender.execute(sendMessage);
     }
 }

@@ -20,6 +20,7 @@ public class BirthdayReminder {
     }
 
     @Scheduled(cron = "0 0 18 ? * *", zone = "Asia/Tehran")
+//    @Scheduled(cron = "* * * ? * *", zone = "Asia/Tehran")
     public void scheduleFixedDelayTask() {
         List<TelegramBotUser> telegramUsers = botUserService.getAll();
         if (!telegramUsers.isEmpty()) {

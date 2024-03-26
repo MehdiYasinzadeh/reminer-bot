@@ -15,7 +15,7 @@ import org.telegram.telegrambots.meta.api.objects.replykeyboard.ReplyKeyboardRem
 
 import java.util.Map;
 
-import static ir.reminder.utility.Constants.START_TEXT;
+import static ir.reminder.utility.Constants.START_TEXT_PR;
 import static ir.reminder.utility.UserState.*;
 
 @Component
@@ -39,7 +39,7 @@ public class ResponseHandler {
     public void replyToStart(long chatId, String userName) {
         SendMessage message = new SendMessage();
         message.setChatId(chatId);
-        message.setText(START_TEXT);
+        message.setText(START_TEXT_PR);
         sender.execute(message);
         telegramBotUserService.save(new TelegramBotUser().setChatId(chatId).setUsername(userName));
     }

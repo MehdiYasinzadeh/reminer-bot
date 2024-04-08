@@ -3,6 +3,8 @@ package ir.reminder.telegram;
 
 import ir.reminder.handler.ResponseHandler;
 import ir.reminder.utility.Constants;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
@@ -15,14 +17,15 @@ import static org.telegram.abilitybots.api.objects.Locality.USER;
 import static org.telegram.abilitybots.api.objects.Privacy.PUBLIC;
 
 @Component
+@Configuration
 public class PizzaBot extends AbilityBot {
 
     private final ResponseHandler responseHandler;
 
-    public PizzaBot(ResponseHandler responseHandler) {
-        super("6978668362:AAF3l4Y1A7NFtjrx5ySyHNwQZbk2EokyHQE", "spring_reminder_bot");
+    public PizzaBot(ResponseHandler responseHandler, @Value("${bot_token:default}") String botToken, @Value("${bot_name:default}") String botName) {
+        super(botToken, botName);
         this.responseHandler = responseHandler;
-        responseHandler.senderInit(silent,db);
+        responseHandler.senderInit(silent, db);
     }
 
     public Ability startBot() {
@@ -53,7 +56,7 @@ public class PizzaBot extends AbilityBot {
                 = "https://api.codebazan.ir/hadis";
         RestTemplate restTemplate = new RestTemplate();
         ResponseEntity<String> response
-                = restTemplate.getForEntity(fooResourceUrl , String.class);
+                = restTemplate.getForEntity(fooResourceUrl, String.class);
         sendMessage.setText(response.getBody());
         sender.execute(sendMessage);
     }

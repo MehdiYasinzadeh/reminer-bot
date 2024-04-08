@@ -19,7 +19,6 @@
     </parent>
 
     <dependencies>
-        <!-- Spring Data JPA -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-jpa</artifactId>
@@ -30,6 +29,5 @@
             <version>2.3.0</version>
         </dependency>
     </dependencies>
-
 
 </project>

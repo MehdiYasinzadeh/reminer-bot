@@ -9,9 +9,5 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 public class SpringBootReminderApiApplication {
     public static void main(String[] args) {
         SpringApplication.run(SpringBootReminderApiApplication.class, args);
-//            System.getProperties().put("proxySet", "true");
-//            System.getProperties().put("socksProxyHost", "127.0.0.1");
-//            System.getProperties().put("socksProxyPort", "2050");
-
     }
 }

@@ -197,5 +197,7 @@ build/
 .vscode/
 
 .jpb/**
-spring_reminder_bot
+spring_reminder_botgit config user.name
 *.wal.0
+
+env.properties
